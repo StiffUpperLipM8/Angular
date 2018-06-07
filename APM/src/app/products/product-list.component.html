@@ -6,12 +6,12 @@
     <div class="row">
       <div class="col-md-2">Filter by:</div>
       <div class="col-md-4">
-        <input type="text" [(ngModel)]="listFilter"/>
+        <input type="text" [(ngModel)]="listFilter"/>           <!-- TWO WAY BINDING -->
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h3>Filtered by: {{listFilter}}</h3>
+        <h3>Filtered by: {{listFilter}}</h3>                 <!-- (INTERPOLATION) ONE WAY BINDING -->
       </div>
     </div>
     <div class='table-responsive'>
@@ -19,7 +19,7 @@
         <thead>
         <tr>
           <th>
-            <button class='btn btn-primary' (click)="toggleImage()">
+            <button class='btn btn-primary' (click)="toggleImage()">    <!-- EVENT BINDING -->
                 {{getButtonText()}}
             </button>
           </th>
@@ -32,7 +32,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let product of filteredProducts">
-              <td>
+              <td>                                                     <!-- (ATTRIBUTE) ONE WAY BINDING -->
                   <img *ngIf="showImage"
                        [src]="product.imageUrl"
                        [title]="product.productName"
@@ -40,9 +40,9 @@
                        [style.margin.px]="imageMargin">
               </td>
               <td>{{product.productName}}</td>
-              <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
+              <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>    <!-- CUSTOM PIPE -->
               <td>{{product.releaseDate}}</td>
-              <td>{{product.price | currency: 'USD' :true: '1.2-2' }}</td>
+              <td>{{product.price | currency: 'USD' :true: '1.2-2' }}</td>           <!-- BUILT IN PIPE -->
               <td>{{product.starRating}}</td>
             </tr>
         </tbody>
