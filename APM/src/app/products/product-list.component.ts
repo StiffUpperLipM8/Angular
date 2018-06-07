@@ -12,7 +12,9 @@ export class ProductListComponent implements OnInit{
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    listFilter: string = "cart";
+    private _listFilter: string;
+
+    filteredProducts: IProduct[];
     products: IProduct[] = [ {
       "productId": 1,
       "productName": "Leaf Rake",
@@ -34,7 +36,22 @@ export class ProductListComponent implements OnInit{
         "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
       }];
 
-    toggleImage(): void {
+  constructor() {
+     this.filteredProducts = this.products;
+  }
+
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  // every time the listValue changes (e.g. in html), the setter is invoked, so we can add a filtering logic here
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this._listFilter ? this.performFilter(this._listFilter) : this.products;
+  }
+
+  toggleImage(): void {
       this.showImage = !this.showImage;
     }
 
@@ -45,5 +62,12 @@ export class ProductListComponent implements OnInit{
     ngOnInit(): void {
        console.log("On init");
     }
+
+    performFilter(filterBy: string): IProduct[] {
+       filterBy = filterBy.toLowerCase();
+       return this.products.filter((product: IProduct) =>
+              product.productName.toLowerCase().indexOf(filterBy) !== -1);
+    }
+
 
 }
