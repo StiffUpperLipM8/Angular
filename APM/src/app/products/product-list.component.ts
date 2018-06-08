@@ -13,10 +13,12 @@ export class ProductListComponent implements OnInit {
   imageMargin: number = 2;
   showImage: boolean = false;
   private _listFilter: string;
+  errorMessage: string;
 
   filteredProducts: IProduct[];
   products: IProduct[];
 
+  // Dependency injection
   constructor(private _productService: ProductService) {
   }
 
@@ -39,8 +41,15 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this._productService.getProducts();
-    this.filteredProducts = this.products;
+    // Works asynchronously - after subscription, for each async returned IProduct[]
+    // will invoke success() funk (products => ...) or failure funk (error=> ...)
+    this._productService.getProducts()
+                        .subscribe(
+                          products => {
+                                  this.products = products;
+                                  this.filteredProducts = this.products;
+                                },
+                          error => this.errorMessage = <any>error);
   }
 
   performFilter(filterBy: string): IProduct[] {
