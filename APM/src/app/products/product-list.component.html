@@ -43,7 +43,10 @@
               <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>    <!-- CUSTOM PIPE -->
               <td>{{product.releaseDate}}</td>
               <td>{{product.price | currency: 'USD' :true: '1.2-2' }}</td>           <!-- BUILT IN PIPE -->
-              <td><pm-star [rating]="product.starRating"></pm-star></td>
+              <td><pm-star
+                      [rating]="product.starRating"
+                      (ratingClicked)="onRatingClicked($event)">
+              </pm-star></td>
             </tr>
         </tbody>
       </table>
