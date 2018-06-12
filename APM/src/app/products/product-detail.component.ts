@@ -11,6 +11,7 @@ export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Product Detail";
   product: IProduct;
 
+  //ActivatedRoute for getting params passed to the current route. Router is for navigating to another routes
   constructor(private _route: ActivatedRoute, private _router: Router) {}
 
   ngOnInit(): void {
