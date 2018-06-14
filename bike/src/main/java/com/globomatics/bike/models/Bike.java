@@ -1,17 +1,38 @@
 package com.globomatics.bike.models;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 public class Bike {
+    private Long id;
     private String name;
     private String email;
     private String phone;
     private String model;
     private String serialNumber;
-    private BigDecimal purchasePrice;
-    private Date purchaseDate;
+    private String purchasePrice;
+    private String purchaseDate;
     private boolean contact;
+
+    public Bike() {
+    }
+
+    public Bike(Long id, String name, String email, String phone, String model, String serialNumber, String purchasePrice, String purchaseDate, boolean contact) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.model = model;
+        this.serialNumber = serialNumber;
+        this.purchasePrice = purchasePrice;
+        this.purchaseDate = purchaseDate;
+        this.contact = contact;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -53,19 +74,19 @@ public class Bike {
         this.serialNumber = serialNumber;
     }
 
-    public BigDecimal getPurchasePrice() {
+    public String getPurchasePrice() {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(BigDecimal purchasePrice) {
+    public void setPurchasePrice(String purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
-    public Date getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
@@ -76,4 +97,5 @@ public class Bike {
     public void setContact(boolean contact) {
         this.contact = contact;
     }
+
 }
