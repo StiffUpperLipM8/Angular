@@ -10,6 +10,7 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { HomeComponent } from './components/home/home.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewRegistrationComponent } from './components/view-registration/view-registration.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     AdminComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    ViewRegistrationComponent
   ],
   imports: [
     BrowserModule,

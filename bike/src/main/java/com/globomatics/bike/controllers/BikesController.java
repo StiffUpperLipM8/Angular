@@ -14,14 +14,15 @@ import java.util.Map;
 public class BikesController {
 
     private Map<Long, Bike> bikes = new HashMap<>();
+    private Long idCounter = 0L;
 
     @PostConstruct
     void init() {
-        bikes.put(1L, new Bike(1L, "Bike 1", "bike1@qwe", "999-999-999", "model 1", "123456",
+        bikes.put(idCounter, new Bike(idCounter++, "Bike 1", "bike1@qwe", "999-999-999", "model 1", "123456",
                 "200", "12-12-2018", false));
-        bikes.put(2L, new Bike(2L, "Bike 1", "bike1@qwe", "999-999-999", "model 1", "123456",
+        bikes.put(idCounter, new Bike(idCounter++, "Bike 1", "bike1@qwe", "999-999-999", "model 1", "123456",
                 "200", "12-12-2018", false));
-        bikes.put(3L, new Bike(3L, "Bike 1", "bike1@qwe", "999-999-999", "model 1", "123456",
+        bikes.put(idCounter, new Bike(idCounter++, "Bike 1", "bike1@qwe", "999-999-999", "model 1", "123456",
                 "200", "12-12-2018", false));
     }
 
@@ -33,7 +34,7 @@ public class BikesController {
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Bike bike) {
-        bikes.put(bike.getId(), bike);
+        bikes.put(idCounter++, bike);
     }
 
     @GetMapping("/{id}")

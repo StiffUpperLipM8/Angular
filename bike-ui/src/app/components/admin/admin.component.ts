@@ -14,6 +14,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.getBikes();
+    let a = 5;
   }
 
   getBikes() {
